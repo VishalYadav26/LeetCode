@@ -41,7 +41,7 @@
 // Could you implement next() and hasNext() to run in average O(1) time and use O(h) memory, 
 // where h is the height of the tree?
   
-// Solution
+// Solution 1
 /**
  * Definition for a binary tree node.
  * public class TreeNode {
@@ -103,3 +103,66 @@ class BSTIterator {
 // Details 
 // Runtime: 19 ms, faster than 84.83% of Java online submissions for Binary Search Tree Iterator.
 // Memory Usage: 52.5 MB, less than 6.14% of Java online submissions for Binary Search Tree Iterator.
+
+// Solution 2
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class BSTIterator {
+    Deque<TreeNode> stack;
+    
+    public BSTIterator(TreeNode root) {
+        stack = new ArrayDeque<>();
+        
+        leftMostNodes(root, stack);
+    }
+    
+    public int next() {
+        if (hasNext()) {
+            TreeNode cur = stack.pollFirst();
+            
+            if (cur.right != null) {
+                leftMostNodes(cur.right, stack);
+            }
+            
+            return cur.val;
+        }
+        
+        return -1;
+    }
+    
+    public boolean hasNext() {
+        return stack.size() > 0;
+    }
+    
+    private void leftMostNodes(TreeNode node, Deque<TreeNode> stack) {
+        while (node != null) {
+            stack.offerFirst(node);
+            node = node.left;
+        }
+    }
+}
+
+/**
+ * Your BSTIterator object will be instantiated and called as such:
+ * BSTIterator obj = new BSTIterator(root);
+ * int param_1 = obj.next();
+ * boolean param_2 = obj.hasNext();
+ */
+// TC: O(1); SC: O(n)
+// Success
+// Details 
+// Runtime: 27 ms, faster than 47.96% of Java online submissions for Binary Search Tree Iterator.
+// Memory Usage: 51.6 MB, less than 71.66% of Java online submissions for Binary Search Tree Iterator.
