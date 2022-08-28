@@ -1,5 +1,4 @@
 // Medium
-
 // Implement the BSTIterator class that represents an iterator over the in-order traversal of a binary search tree (BST):
 // BSTIterator(TreeNode root) Initializes an object of the BSTIterator class. 
 // The root of the BST is given as part of the constructor. 
