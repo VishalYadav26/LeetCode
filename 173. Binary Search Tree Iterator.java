@@ -98,7 +98,7 @@ class BSTIterator {
  * int param_1 = obj.next();
  * boolean param_2 = obj.hasNext();
  */
-// TC: O(n); SC: O(height)
+// TC: O(n); SC: O(n)
 // Success
 // Details 
 // Runtime: 19 ms, faster than 84.83% of Java online submissions for Binary Search Tree Iterator.
