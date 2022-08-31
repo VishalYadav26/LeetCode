@@ -32,7 +32,7 @@
 // 1 <= nums.length <= 2500
 // -104 <= nums[i] <= 104
   
-// Solution
+// Solution 1
 class Solution {
     public int lengthOfLIS(int[] nums) {
         if (nums == null || nums.length == 0) {
@@ -65,3 +65,35 @@ class Solution {
 // Details 
 // Runtime: 98 ms, faster than 16.47% of Java online submissions for Longest Increasing Subsequence.
 // Memory Usage: 44.7 MB, less than 34.69% of Java online submissions for Longest Increasing Subsequence.
+
+// Solution 2
+class Solution {
+    public int lengthOfLIS(int[] nums) {
+        int len = nums.length;
+        int[] maxGreater = new int[len];
+        maxGreater[len - 1] = 1;
+        int glbMax = 1;
+        
+        for (int i = len - 2; i >= 0; i--) {
+            int nMax = 1;
+            int rawMax = 1;
+            
+            for (int j = i + 1; j < len; j++) {
+                if (nums[j] > nums[i]) {
+                    int temp = rawMax + maxGreater[j];
+                    nMax = Math.max(nMax, temp);
+                }
+            }
+            
+            maxGreater[i] = nMax;
+            glbMax = Math.max(glbMax, nMax);
+        }
+        
+        return glbMax;
+    }
+}
+// TC: O(n^2); SC: O(n);
+// Success
+// Details 
+// Runtime: 64 ms, faster than 62.16% of Java online submissions for Longest Increasing Subsequence.
+// Memory Usage: 44 MB, less than 79.45% of Java online submissions for Longest Increasing Subsequence.
