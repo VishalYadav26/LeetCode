@@ -48,7 +48,7 @@ class Solution:
         
         return helper(0, len(inorder) - 1, 0, len(postorder) - 1)
             
-#  TC: O(n); SC: O(height)
+# TC: O(n); SC: O(height)
 # Success
 # Details 
 # Runtime: 73 ms, faster than 89.55% of Python3 online submissions for Construct Binary Tree from Inorder and Postorder Traversal.
