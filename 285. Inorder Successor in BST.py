@@ -57,7 +57,7 @@ class Solution:
                 cur = cur.right
         
         return None if len(stack) == 0 else stack.pop()
-# TC: O(n): SC: O(n)
+# TC: O(n); SC: O(n)
 # Success
 # Details 
 # Runtime: 101 ms, faster than 64.94% of Python3 online submissions for Inorder Successor in BST.
